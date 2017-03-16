@@ -3,5 +3,5 @@ bower_components/
 .idea/
 .sass-cache/
 .DS_Store
-/app/dist/
+app/dist/
 
