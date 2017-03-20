@@ -5,7 +5,7 @@
 				enabled: true,
 				requireBase: false
 			});
-		$stateProvider 
+		$stateProvider
 			.state('landing', {
 				url: '/',
 				templateUrl: '/templates/landing.html'
@@ -23,5 +23,4 @@
 		.module('blocJams', ['ui.router'])
 		.config(config);
 })();
-
 
