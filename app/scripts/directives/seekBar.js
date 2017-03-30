@@ -45,7 +45,6 @@
 					return {left: percentString()};
 				};
 
-
 				scope.onClickSeekBar = function () {
 					var percent = calculatePercent(seekBar, event);
 					scope.value = percent * scope.max;
