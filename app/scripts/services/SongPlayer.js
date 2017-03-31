@@ -88,6 +88,12 @@
 		SongPlayer.volume = 80;
 
 		/**
+		* @desc Mute/UnMuted status of current song
+		* @type {Boolean}
+		*/
+		SongPlayer.muted = null;
+
+		/**
 		* @method SongPlayer.play
 		* @desc Sets and plays a song or plays a different song based on whether or not song is or is not currently playing.
 		* @param {Object} song
@@ -174,6 +180,31 @@
 				currentBuzzObject.setVolume(volume);
 			}
 			SongPlayer.volume = volume;
+		};
+
+		/**
+		* @function muteVolume
+		* @desc Buzz Library method to reduce current volume to 0
+		* @param {Number} volume
+		*/
+		SongPlayer.muteVolume = function () {
+			var volume = currentBuzzObject.getVolume();
+			var muted = false;
+
+			if (currentBuzzObject) {
+				currentBuzzObject.mute();
+				SongPlayer.volume = 0;
+				SongPlayer.muted = true;
+			} 
+		};
+
+		SongPlayer.unmute = function () {
+			var volume = currentBuzzObject.getVolume();
+			if(currentBuzzObject.isMuted()) {
+				currentBuzzObject.unmute();
+				SongPlayer.volume = volume;
+				SongPlayer.muted = false;
+			}
 		};
 		
 		return SongPlayer;
