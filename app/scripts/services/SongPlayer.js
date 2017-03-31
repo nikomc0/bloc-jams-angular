@@ -180,7 +180,7 @@
 				if (currentBuzzObject.isMuted()) {
 					currentBuzzObject.setVolume(volume);
 					SongPlayer.unmute(volume);
-				}
+				} 
 				currentBuzzObject.setVolume(volume);
 			}
 
@@ -192,7 +192,7 @@
 		* @desc Buzz Library method to reduce current volume to 0
 		* @param {Number} volume
 		*/
-		SongPlayer.muteVolume = function (volume) {
+		SongPlayer.mute = function (volume) {
 			volume = currentBuzzObject.getVolume();
 			var muted = false;
 
