@@ -35,7 +35,7 @@
 					SongPlayer.currentTime = currentBuzzObject.getTime();
 				});
 			});
-			
+
 			SongPlayer.currentSong = song;
 		};
 		
@@ -86,6 +86,12 @@
 		* @type {Number}
 		*/
 		SongPlayer.volume = 80;
+
+		/**
+		* @desc Mute/UnMuted status of current song
+		* @type {Boolean}
+		*/
+		SongPlayer.muted = null;
 
 		/**
 		* @method SongPlayer.play
@@ -171,9 +177,44 @@
 		*/
 		SongPlayer.setVolume = function (volume) {
 			if (currentBuzzObject) {
+				if (currentBuzzObject.isMuted()) {
+					currentBuzzObject.setVolume(volume);
+					SongPlayer.unmute(volume);
+				} 
 				currentBuzzObject.setVolume(volume);
 			}
+
 			SongPlayer.volume = volume;
+		};
+
+		/**
+		* @function muteVolume
+		* @desc Buzz Library method to reduce current volume to 0
+		* @param {Number} volume
+		*/
+		SongPlayer.mute = function (volume) {
+			volume = currentBuzzObject.getVolume();
+			var muted = false;
+
+			if (currentBuzzObject) {
+				currentBuzzObject.mute();
+				SongPlayer.volume = 0;
+				SongPlayer.muted = true;
+			} 
+		};
+
+		/**
+		* @function unMute Volume
+		* @desc Buzz Library method to restore current volume to original value
+		* 
+		*/
+		SongPlayer.unmute = function (volume) {
+			volume = currentBuzzObject.getVolume();
+			if(currentBuzzObject.isMuted()) {
+				currentBuzzObject.unmute();
+				SongPlayer.volume = volume;
+				SongPlayer.muted = false;
+			}
 		};
 		
 		return SongPlayer;
