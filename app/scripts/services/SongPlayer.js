@@ -1,5 +1,5 @@
 (function () {
-	function SongPlayer ($rootScope, Fixtures, Playlist) {
+	function SongPlayer ($rootScope, Fixtures) {
 		var SongPlayer = {};
 		
 		/**
@@ -177,9 +177,13 @@
 		};
 
 		SongPlayer.addToPlaylist = function (song) {
+			var Playlist = [];
+
 			if (currentBuzzObject) {
-				currentBuzzObject.addToPlaylist(song);
+				Playlist.push(currentBuzzObject);
 			}
+
+			return Playlist;
 		};
 		
 		return SongPlayer;
@@ -187,6 +191,6 @@
 	
 	angular
 		.module ('blocJams')
-		.factory ('SongPlayer', ['$rootScope', 'Fixtures', 'Playlist', SongPlayer]);
+		.factory ('SongPlayer', ['$rootScope', 'Fixtures', SongPlayer]);
 })();
 
