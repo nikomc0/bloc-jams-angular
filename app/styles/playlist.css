@@ -1,0 +1,14 @@
+.playlist {
+	position: fixed;
+	bottom: 200px;
+	left: 0;
+	right: 0;
+	height: 200px;
+	width: 300px;
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 100;
+}
+
+.player-bar .list {
+	padding: 20px;
+}
